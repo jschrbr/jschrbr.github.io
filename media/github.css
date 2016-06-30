@@ -1,121 +1,118 @@
-/* GitHub Theme */
+/*
+ * Derived from einaros's Sons of Obsidian theme at
+ * http://studiostyl.es/schemes/son-of-obsidian by
+ * Alex Ford of CodeTunnel:
+ * http://CodeTunnel.com/blog/post/71/google-code-prettify-obsidian-theme
+ */
+
+.str
+{
+    color: #EC7600;
+}
+.kwd
+{
+    color: #93C763;
+}
+.com
+{
+    color: #66747B;
+}
+.typ
+{
+    color: #678CB1;
+}
+.lit
+{
+    color: #FACD22;
+}
+.pun
+{
+    color: #F1F2F3;
+}
+.pln
+{
+    color: #F1F2F3;
+}
+.tag
+{
+    color: #8AC763;
+}
+.atn
+{
+    color: #E0E2E4;
+}
+.atv
+{
+    color: #EC7600;
+}
+.dec
+{
+    color: purple;
+}
+pre.prettyprint
+{
+    border: 0px solid #888;
+}
+ol.linenums
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .prettyprint {
-  background: white;
-  font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #333;
-  display: block;
-  padding: 10px;
-  margin: 0 0 30px 0 !important;
-  word-break: break-all;
-  word-wrap: break-word;
-  white-space: pre;
-  white-space: pre-wrap;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+    background: #000;
 }
-
-.pln {
-  color: #333333;
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9
+{
+    color: #555;
+    list-style-type: decimal;
 }
-
-@media screen {
-  .str {
-    color: #dd1144;
-  }
-
-  .com {
-	color: #999;
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+    background: #111;
 }
-.lit {
-	color: #195f91;
-}
-.pun, .opn, .clo {
-	color: #93a1a1;
-}
-.fun {
-	color: #dc322f;
-}
-.str, .atv {
-	color: #D44950;
-}
-.kwd, .prettyprint .tag {
-	color: #2F6F9F;
-}
-.typ, .atn, .dec, .var {
-	/*color: teal;*/
-	color: #4F9FCF;
-}
-.pln {
-	color: #333;
-}
-}
-@media print, projection {
-  .com {
-	color: #999;
-}
-.lit {
-	color: #195f91;
-}
-.pun, .opn, .clo {
-	color: #93a1a1;
-}
-.fun {
-	color: #dc322f;
-}
-.str, .atv {
-	color: #D44950;
-}
-.kwd, .prettyprint .tag {
-	color: #2F6F9F;
-}
-.typ, .atn, .dec, .var {
-	/*color: teal;*/
-	color: #4F9FCF;
-}
-.pln {
-	color: #333;
-}
-}
-
-
-/* IE indents via margin-left */
-li.L0,
-li.L1,
-li.L2,
-li.L3,
-li.L4,
-li.L5,
-li.L6,
-li.L7,
-li.L8,
-li.L9 {
-  /* */
-}
-
-/* Alternate shading for lines */
-li.L1,
-li.L3,
-li.L5,
-li.L7,
-li.L9 {
-  /* */
-}
-
-.prettyprint.linenums {
-	-webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
-	        box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
-}
-
-ol.linenums {
-	margin: 0 0 0 -12px;
-}
-ol.linenums li {
-	padding-left: 12px;
-	color: #bebec5;
-	line-height: 20px;
-	list-style: decimal;
+@media print
+{
+    .str
+    {
+        color: #060;
+    }
+    .kwd
+    {
+        color: #006;
+        font-weight: bold;
+    }
+    .com
+    {
+        color: #600;
+        font-style: italic;
+    }
+    .typ
+    {
+        color: #404;
+        font-weight: bold;
+    }
+    .lit
+    {
+        color: #044;
+    }
+    .pun
+    {
+        color: #440;
+    }
+    .pln
+    {
+        color: #000;
+    }
+    .tag
+    {
+        color: #006;
+        font-weight: bold;
+    }
+    .atn
+    {
+        color: #404;
+    }
+    .atv
+    {
+        color: #060;
+    }
 }

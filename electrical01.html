@@ -153,6 +153,33 @@
 			for k in friends[f]:
 				graph.add_edge(f,k)</pre>
 	</p>
+
+<h3>Video</h3>
+
+
+<p>
+	You can set it up with: 
+	<pre class="prettyprint linenums">
+    &ltdiv align="center" class="embed-responsive embed-responsive-16by9">
+        &ltvideo accesskey="" loop class="embed-responsive-item" muted="muted">
+            &ltsource src="media/small.mp4" type="video/mp4"&gt;
+        &lt/video&gt; 
+    &lt/div&gt;
+    </pre>
+	
+	Result:
+
+
+
+    <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video accesskey="" loop class="embed-responsive-item" muted="muted">
+            <source src="media/small.mp4" type="video/mp4">
+        </video>
+    
+    </div>
+
+	</p>
+
 	
 	<h3>3D Model</h3>
 	<p>	
@@ -244,18 +271,27 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
     
+    <!--Initially pause videos-->
+	<script type="text/javascript">
+        $("video").each(function(){
+            $(this).get(0).pause();
+        });
+	</script>    
+    <!-- Play video, when in viewport -->
+    <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
+    <script type="text/javascript" src="viewport.js"> </script>
+
+
+
+
     <!-- Syntax Highlighter -->
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
+
+
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript">
-	  !function ($) {
-		$(function(){
-		  window.prettyPrint && prettyPrint()   
-		})
-	  }(window.jQuery)
-	</script>
+
 	
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

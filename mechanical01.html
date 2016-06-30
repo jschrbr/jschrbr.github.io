@@ -32,8 +32,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <!-- Load the menu file -->
-      <script>
+       <!-- Load the menu file -->
+    <script>
 	function menu() {
 					  $('#electrical').load("electrical-menu.html");
 					  $('#mechanical').load("mechanical-menu.html");
@@ -88,7 +88,6 @@
     </nav>
 
     <div class="container">
-
 	<!-- Insert your content here below! -->
 
 
@@ -121,12 +120,12 @@
 	<h3>Images</h3>
 	<p>
 	You can set it up with: Woop woop woop
-<!--
-	<pre class="prettyprint linenums">
+	<pre class="prettyprint linenums" lang = "lang-html">
 	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
 	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
 	&lt/p&gt;</pre>
 	</p>
+<!--
 	Result:
 	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
 	<legend>Here's the legend of the picture.</legend>
@@ -136,38 +135,48 @@
 	<h3>Code</h3>
 	<p>
 	You can set it up with:
-	<pre class="prettyprint linenums">
+        <div id="vibrant_ink"class="theme_preview">
+       
+	<pre class="prettyprint linenums" lang = "lang-html">
 	&ltpre class="prettyprint linenums"&gt;
 	Your code here
 	&lt/pre&gt;</pre>
-	
+	 </div>
+        
+
+
+        
 	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
+	<pre class="prettyprint linenums" lang = "lang-py">
+	#------IMPORTS-------
+from pygestalt import nodes
+from pygestalt import interfaces
+from pygestalt import machines
+from pygestalt import functions
+from pygestalt.machines import elements
+from pygestalt.machines import kinematics
+from pygestalt.machines import state
+from pygestalt.utilities import notice
+from pygestalt.publish import rpc	#remote procedure call dispatcher
+import time
+import io
 
-		# Add edges...
-		print "Building the graph..."
-
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
+#------VIRTUAL MACHINE------
+class virtualMachine(machines.virtualMachine):
 	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
+	def initInterfaces(self):
+		if self.providedInterface: self.fabnet = self.providedInterface		#providedInterface is defined in the virtualMachine class.
+		else: self.fabnet = interfaces.gestaltInterface('FABNET', interfaces.serialInterface(baudRate = 115200, interfaceType = 'ftdi', portName = '/dev/tty.usbserial-FTXW7FE2'))
+		
+</pre>
 	</p>
 
 <h3>Video</h3>
 
 
 <p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
+	You can set it up with: 
+	<pre class="prettyprint linenums"  style="border:4px solid #88c">
     &ltdiv align="center" class="embed-responsive embed-responsive-16by9">
         &ltvideo accesskey="" loop class="embed-responsive-item" muted="muted">
             &ltsource src="media/small.mp4" type="video/mp4"&gt;
@@ -268,7 +277,7 @@
     
     <footer id="footer">
         <p id="cclicense">
-                </p>
+        </p>
         <p class="license">
         Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
@@ -281,40 +290,32 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
+    
     <!--Initially pause videos-->
 	<script type="text/javascript">
         $("video").each(function(){
             $(this).get(0).pause();
         });
-
 	</script>    
     <!-- Play video, when in viewport -->
     <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
     <script type="text/javascript" src="viewport.js"> </script>
+
+
+
+
     <!-- Syntax Highlighter -->
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
+
+
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript">
-	  !function ($) {
-		$(function(){
-		  window.prettyPrint && prettyPrint()   
-		})
-	  }(window.jQuery)
-	</script>
+
 	
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-
-
-</script> 
-      
-
 
   </body>
 </html>

@@ -227,11 +227,11 @@
 
     </div> <!-- /container -->
 
-	<!-- footer -->
+		<!-- footer -->
     
     <footer id="footer">
         <p id="cclicense">
-                </p>
+        </p>
         <p class="license">
         Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
@@ -245,18 +245,27 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
     
+    <!--Initially pause videos-->
+	<script type="text/javascript">
+        $("video").each(function(){
+            $(this).get(0).pause();
+        });
+	</script>    
+    <!-- Play video, when in viewport -->
+    <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
+    <script type="text/javascript" src="viewport.js"> </script>
+
+
+
+
     <!-- Syntax Highlighter -->
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
+
+
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript">
-	  !function ($) {
-		$(function(){
-		  window.prettyPrint && prettyPrint()   
-		})
-	  }(window.jQuery)
-	</script>
+
 	
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
