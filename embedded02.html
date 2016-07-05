@@ -113,48 +113,129 @@
 	Your text here
 	</p>
 	
-	<h3>Images</h3>
+	
+	<h3>G-code to csv</h3>
 	<p>
-	You can set it up with:
+	The python script below isnt ideal. This approach becomes tricky when attempting to account for the different styles of g-code. For one-off, more simpile g-codes, its probably easier to use 'replace all' in a text editor.
+    However, the script can be easily altered to according to your regularly generated g-code. 
 	<pre class="prettyprint linenums">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
+import os
+import csv
+
+#Rename g-code extension to .csv then open file path.
+fi = open(os.path.expanduser("~/gcode.csv"))
+#Read g-code
+gcode = csv.reader(fi)
+#Create empty .csv, open file path for writing.
+fo = open(os.path.expanduser("~/path.csv"), "wb")     
+# write to csv.
+path = csv.writer(fo, delimiter='	', quotechar='"', quoting=csv.QUOTE_NONE)
+
+#For loop, using replace to comma seperate values
+for row in gcode:
+    row = str(row)
+    
+    # seperates x and y values with a comma. Comment out when running final path
+    row1 = row.replace( "Y", ", Y" )
+    
+    
+    # Uncomment for final path file
+    # row12 = row.replace( "Y", ", " )
+    # row13 = row12.replace("Z" , "")
+    # row1 = row13.replace("X", "")
+    row2 = row1.replace( "G01" , "")
+    row3 = row2.replace( "G00" , "")
+    
+    # Toggle comment for final path
+    row4 = row3.replace( "F", ", F" )
+    # row4 = row3.replace( "F", ", " )
+    
+    
+    # Write to .csv
+    path.writerow(row4)
+    print(row4)
+    
+    
+# close files
+fi.close
+fo.close</pre>
 	</p>
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
-     
-	<h3>Code</h3>
+	
 	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	
-	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
-
-		# Add edges...
-		print "Building the graph..."
-
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
-	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
+	<a href="media/gcode-csv.py">
+	<button type="button" class="btn btn-primary btn-lg">gcode-csv.py</button>
+	</a>
 	</p>
+
+    <h3>Path.csv to Moves</h3>
+    
+<p>
+ The CSV reader in one of the example python machines didn't seem to work for me. I had more luck with this code. I also modified the reader for X,Y, and Z axes.
+       <pre class= "prettyprint linenums">
+    	# This is for how fast the 
+	stages.xyzNode.setVelocityRequest(6.5)
+        stages.zAxisNode.setVelocityRequest(1.25)
+
+    
+	# Some random moves to test with
+#	moves = [[0,0,-18], [0,0,0]]
+#	moves = [[-2,0,0]]
+#
+#
+f = open(os.path.expanduser("~/CNCRouter/Gestalt/pygestalt/examples/machines/htmaa/path.csv "))
+
+
+
+csv_f = csv.reader(f)
+
+moves = []
+n = []
+p = []
+
+i = 0
+
+
+for row in csv_f:
+	try:
+		n.append(float(row[0]))
+	except ValueError:
+   		continue
+   	try:
+		n.append(float(row[1]))
+	except ValueError:
+   		continue
+   	try:
+		n.append(float(row[2]))
+	except ValueError:
+   		continue
+
+length = len(n)
+
+
+while i&ltlength:
+	p = [n[i],n[i+1],n[i+2]]
+	moves.append(p)
+	i = i + 3
+f.close
+
+
+	# Move!
+for move in moves:
+    stages.move(move, 0)
+    status = stages.xAxisNode.spinStatusRequest()
+		# This checks to see if the move is done.
+    while status['stepsRemaining'] > 0:
+        time.sleep(0.001)
+        status = stages.xAxisNode.spinStatusRequest()	
 	
+
+    </pre>
+    
+    </p>    
+ 
+    
+    
+
 	<h3>3D Model</h3>
 	<p>	
 	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
