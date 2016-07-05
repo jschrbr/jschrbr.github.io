@@ -400,6 +400,7 @@ Feedrate = 2mm/s     // probably too little        </pre>
     <!--Initially pause videos-->
 	<script type="text/javascript">
         $("video").each(function(){
+            $(this).get(0).play();
             $(this).get(0).pause();
         });
 	</script>    
