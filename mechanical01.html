@@ -95,23 +95,49 @@
     
     <h3>Background</h3>
 	<p>
-        foredom rotartytool
+
         
-        The farm I live on was donated a small CNC router (DIM). The CNC was mechanically functional, with stepper motors in place. However, there was no control system to accompany it. I had been reading up on <a href="http://archive.monograph.io/james/m-mtm">gestalt nodes</a> , they seemed, (and are), awesome! and could be welcomed in future projects. So I went with that. 
+        I have recently come across a small CNC router (300x220x50). The CNC was mechanically functional. However, there were no boards to control the stepper motors. I had also been reading up on <a href="http://archive.monograph.io/james/m-mtm">gestalt nodes</a> , they seemed, (and are), awesome! and could be well utilised in future projects. 
     </p>
         
     <p>
-        In brief, the gestalt framework, makes it easier to implement stepper motors (Precise control). This allows for the automation of more small-scale personal tasks and/or fabrication process. I.e <a href="http://fab.cba.mit.edu/classes/863.15/section.CBA/cba-mtm/index.html">licking a cake</a> , or selling hand-made goods. 
+        In brief, the gestalt framework, makes it easier to use stepper motors (Precise control), in a project. This allows for the automation of more small-scale personal tasks and/or fabrication process. I.e <a href="http://fab.cba.mit.edu/classes/863.15/section.CBA/cba-mtm/index.html">licking a cake</a> , or small businesses involved in hand-made goods. 
     </p>
         
     <p>
-        The CNC router that I worked on, would be considered a more traditional machine, with 3 stages for movement in 3 axes. I figured this would be a reasonable beginners project for the nodes. Admittedly, most of the work was on the electrical side, in both hardware and software, which were learning curves... Though once the machine was running, I was back in my comfort zone.
+        The CNC router that I worked on, is a moving gantry robot, which moves a foredom rotary tool. This would be a straight forward project for getting started with the nodes. 
+        Most of the work done to get the machine running is in the Electrical and Embedded sections of the website.
+        
     </p>  
+
             
     <h4>The Router</h4>
-
-
-        	
+ 	Specs:
+    <pre class="prettyprint">
+    Materials:
+    Bed =  steel plate
+    Shafts = steel rod
+    Leadscrew =  steel acme threaded rod
+    Stages = nylon sheet
+    
+    Spindle:
+    Power = 100W
+    Cutting Speed = 20000rpm // Not Variable... yet
+    Chuck = 4mm
+    
+    Dimensions:
+    Work [X,Y,Z] = []
+    Total [X,Y,Z] = []
+    
+    Steppers:    
+    No. = 4
+    Package = nema17
+    Volt = 12V
+    Amp = 1.2A
+    Inductance = ?H
+    Max RPM = ?rpm
+    </pre>
+         
 	<p>	
 
 	<canvas id="cv" width=640 height=480>
@@ -148,11 +174,11 @@
         </p>
         
         <pre class="prettyprint linenums:45">
-            	def initKinematics(self):
-		self.xAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])
-		self.yAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])		
-		self.zAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(False)])		
-		self.stageKinematics = kinematics.direct(3)	#direct drive on all axes
+def initKinematics(self):
+    self.xAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])
+    self.yAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])		
+    self.zAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(False)])		
+    self.stageKinematics = kinematics.direct(3)	#direct drive on all axes
             </pre>
         
         <p>
@@ -161,8 +187,8 @@
         </p>
         
                 <pre class="prettyprint">
-        
-        Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacement]
+
+Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacement]
         </pre> 
         
         <h4>Bed Limits and Level</h4>
@@ -239,6 +265,57 @@ class virtualMachine(machines.virtualMachine):
         <p>I could easily create models in Rhino (a 3D Modler) and output to a .csv via Grasshopper (a plug-in for Rhino).</p>
         <p>I could also open other file types, such as .png, .svg, and g-codes, in Grasshopper. Then output as .csv, which can be sent to the router</p>
         
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="media/images/Rhino%20star.png" alt="Gear">
+              <div class="carousel-caption">
+        <h3>Sketch</h3>
+        <p>This is not a sketch of a throwing star.</p>
+      </div>
+    </div>
+      
+
+
+    <div class="item">
+      <img src="media/images/dividecrv.png" alt="Boot">
+                      <div class="carousel-caption">
+        <h3>Divide Curve</h3>
+        <p>Sketch opened in grasshopper as a curve. Then CurveDivide for points. </p> <p>Mmm... points.</p>
+      </div>
+    </div>
+  
+
+      
+    <div class="item">
+      <img src="media/images/GHpath.png" alt="Gear">
+                      <div class="carousel-caption">
+        <h3>Path</h3>
+        <p>Split &amp Concact for path.</p>
+      </div>
+    </div>
+            </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>  
+        
+        
 <h3>First Cuts</h3>    
 <h4>preface</h4>  
 <pre class="prettyprint">
@@ -257,13 +334,14 @@ WD-40 Application = liberal
 </pre> 
 
         
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel1" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
+
   </ol>
 
   <!-- Wrapper for slides -->
@@ -271,56 +349,70 @@ WD-40 Application = liberal
     <div class="item active">
       <img src="media/images/IMG_5558.jpg" alt="Gear">
               <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <h3>Gear</h3>
+        <p>First attempt to cut aluminium. I used a gear generator in grasshopper. Kind of looks like a throwing star...</p>
       </div>
     </div>
+      
 
 
     <div class="item">
       <img src="media/images/IMG_5562.jpg" alt="Boot">
                       <div class="carousel-caption">
-        <h3>Chania</h3>
+        <h3>Dust Boot!</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
       </div>
     </div>
   
 
+      
     <div class="item">
-      <img src="media/images/IMG_5561.jpg" alt="Gear">
+      <img src="media/images/BigGood.jpg" class="img-responsive" alt="Responsive image">
                       <div class="carousel-caption">
-        <h3>Chania</h3>
+        <h3>Good cut</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
       </div>
     </div>
 
 
     <div class="item">
-      <img src="media/images/IMG_5564.jpg" alt="Boot">
+      <img src="media/images/BigBad.jpg" class="img-responsive" alt="Responsive image">
                       <div class="carousel-caption">
-        <h3>Chania</h3>
+        <h3>Bad cut</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
       </div>
     </div>
-    </div>
+
 
 
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+  <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>        
-      Result:
+</div>   
+        </div>  
+    
+    
+    <p>      Result:
         image gear and dust boot, 
-        close up cut quality
+        close up cut quality </p>
         
         
-<h3>Future Cuts</h3>    
+            <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video controls="controls"  class="embed-responsive-item" muted="muted">
+            <source src="media/Cut%20inspection.m4v" type="video/mp4">
+        </video>
+    </div> 
+
+        
+        
+<h3>Future Cuts</h3>
+        
 <h4>DustBoot2.0</h4>  
 <pre class="prettyprint">
 About the Bit:
@@ -343,7 +435,7 @@ Plungrate = 1.25mm/s
         </video>
     </div>        
         
-<p>Actual speed...</p>        
+<p>stuff</p>        
         
         
 <h4>ESP8266 Breakout Board</h4>  
@@ -364,17 +456,6 @@ Feedrate = 2mm/s     // probably too little        </pre>
         
 
 
-    <h3>Download</h3>
-
-
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
     <!-- End of your content -->
       </div>
      <!-- /container -->
@@ -400,7 +481,6 @@ Feedrate = 2mm/s     // probably too little        </pre>
     <!--Initially pause videos-->
 	<script type="text/javascript">
         $("video").each(function(){
-            $(this).get(0).play();
             $(this).get(0).pause();
         });
 	</script>    
