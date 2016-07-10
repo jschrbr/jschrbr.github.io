@@ -1,7 +1,7 @@
 import os
 import csv
 
-#Rename g-code extension to .csv then open file path.
+#Rename g-code .nc to .csv then open file path.
 fi = open(os.path.expanduser("~/gcode.csv"))
 #Read g-code
 gcode = csv.reader(fi)
@@ -20,7 +20,7 @@ for row in gcode:
     
 #    Uncomment for final path file
 #    row12 = row.replace( "Y", ", " )
-#    row13 = row12.replace("Z" , "")
+#    row13 = row12.replace("Z", "0, 0, ")
 #    row1 = row13.replace("X", "")
 
     row2 = row1.replace( "G01" , "")
