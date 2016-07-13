@@ -91,104 +91,73 @@
 	<!-- Insert your content here below! -->
 
 
-     <h2>Web</h1>
+     <h2>Web</h2>
     
-    <h3>Menu</h3>
-	<p>
-	You can edit it by changing the <em>exercises-menu.html</em> and <em>project-menu.html</em>. Do <strong>not</strong> add any &ltol&gt; or &ltul&gt;, leave the structure as it is.
-	</p>
-    
-    
-    <h3>Text</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp&gt;
-	Your text here
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p>
-	Your text here
-	</p>
-	
-	<h3>Images</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
-     
-	<h3>Code</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	
-	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
+       <h4>Contents</h4>
+        <section id="cont">
+        <pre class="prettyprint linenums">
+<a class = "page-scroll" href="#background">Background</a>
+<a class = "page-scroll" href="#calibration">Calibration</a>
+<a class = "page-scroll" href="#flow">Flow</a>
+<a class = "page-scroll" href="#cut">Cuts</a>
+<a class = "page-scroll" href="#future">The Future!</a></pre>
 
-		# Add edges...
-		print "Building the graph..."
+        </section>
 
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
-	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
-	</p>
-	
-	<h3>3D Model</h3>
+    <h3 id=background>Background</h3>
+
+    <p>
+        I have recently come across a small CNC router (300x220x50). The CNC was mechanically functional. However, there were no boards to control the stepper motors. I had also been reading up on <a href="http://archive.monograph.io/james/m-mtm">gestalt nodes</a> , they seemed, (and are), awesome! and could be well utilised in future projects. 
+    </p>
+        
+    <p>
+        In brief, the gestalt framework, makes it easier to use stepper motors (Precise control), in a project. This allows for the automation of more small-scale personal tasks and/or fabrication process. I.e <a href="http://fab.cba.mit.edu/classes/863.15/section.CBA/cba-mtm/index.html">licking a cake</a> , or small businesses involved in hand-made goods. 
+    </p>
+        
+    <p>
+        The CNC router that I worked on, is a moving gantry robot, which moves a foredom rotary tool. This would be a straight forward project for getting started with the nodes. 
+        Most of the work done to get the machine running is in the Electrical and Embedded sections of the website.
+        
+    </p>  
+
+            
+    <h4>The Router</h4>
+ 	Specs:
+    <pre class="prettyprint">
+    Materials:
+    Bed =  steel plate
+    Shafts = steel rod
+    Leadscrew =  steel acme threaded rod
+    Stages = nylon sheet
+    
+    Spindle:
+    Power = 100W
+    Cutting Speed = 20000rpm // Not Variable... yet
+    Chuck = 4mm
+    
+    Dimensions:
+    Work [X,Y,Z] = []
+    Total [X,Y,Z] = []
+    
+    Steppers:    
+    No. = 4
+    Package = nema17
+    Volt = 12V
+    Amp = 1.2A
+    Inductance = ?H
+    Max RPM = ?rpm
+    </pre>
+         
 	<p>	
-	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltcanvas id="cv" width=640 height=480&gt;
-	It seems you are using an outdated browser that does not support canvas :-(
-	&lt/canvas&gt;
-	&ltscript type="text/javascript"&gt;
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	&lt/script&gt;</pre>
-	
-	You can set up the path to the 3D model (.stl/.obj) within this line:
-	<pre class="prettyprint linenums">
-	viewer.setParameter('SceneUrl','media/monkey.stl');</pre>
-	
-	Result:
+
 	<canvas id="cv" width=640 height=480>
 	It seems you are using an outdated browser that does not support canvas :-(
 	</canvas>
 	<script type="text/javascript">
 		var canvas = document.getElementById('cv');
 		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
+		viewer.setParameter('SceneUrl','media/CNC.stl');
+		viewer.setParameter('ModelColor','#B0C4DE');
 		viewer.setParameter('BackgroundColor1','#E5D7BA');
 		viewer.setParameter('BackgroundColor2','#383840');
 		viewer.setParameter('RenderMode','flat');
@@ -199,32 +168,347 @@
 		viewer.update();
 	</script> 
     </p> 
-    
-    <h3>Download</h3>
-	<p>
-	You can set up a button for files to be downloaded with:
-	<pre class="prettyprint linenums">
-	&lta href="#"&gt;
-	&ltbutton type="button" class="btn btn-primary btn-lg">Download the file&lt/button&gt;
-	&lt/a&gt;</pre>
-	</p>
-	
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
-      
-    <h3>Would you like to insert more style/elements?</h3>
-      <p>
-      Check the documentation of Bootstrap <a href="">here</a>.
-      </p>
-    <!-- End of your content -->
 
-    </div> <!-- /container -->
+        
+    <div id = "calibration">    
+    <h3 id = "calibration">Talking 'bout my calibration</h3>
+        
+        <p>Gestalt nodes are programed from a python 'machine' script, here's the one I used.<a href= Pythoneg.html> CNCRouter.py</a>
+        </p>
+        
+        <h4>Leadscrew</h4>         
+        <p>
+        The leadscrew value is used to relate the rotations of the stepper motors, with the linear translation of the CNC's stages.    
+        </p>
+        
+        <p>
+        Leadscrew values are defined in the excerpted piece of code below. 
+        </p>
+        
+        <pre class="prettyprint linenums:45">
+def initKinematics(self):
+    self.xAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])
+    self.yAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(True)])		
+    self.zAxis = elements.elementChain.forward([elements.microstep.forward(4), elements.stepper.forward(1.8), elements.leadscrew.forward(2.12), elements.invert.forward(False)])		
+    self.stageKinematics = kinematics.direct(3)	#direct drive on all axes
+            </pre>
+        
+        <p>
+            
+        I assumed a leadscrew value in the above code (Assumed Leadscrew), and command the stage to move 10mm (Expected Displacement), then measure the actual displacement (Actual Displacement). We can find the Actual Leadscrew using the proportionality of error, outlined in the equation below.
+        </p>
+        
+        <pre class="prettyprint">
+Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacement]
+        </pre> 
+        
+        <h4>Bed Limits and Level</h4>
+        <p>
+        With the spindle off, I jogged the tool around the bed. I approximated the limits for the X and Y axes (no limit switches). Once satisfied, I tested the level of the bed. Lowering the tool at each of the corners and the center, with little variance.
+        </p>
+
+        <p>
+        After completeing these measurements I was confident in placing and aligning the workpiece, and could adjust the path files according to final measurements.
+        </p>
+        
+        
+</div>
+	
+<!--
+	<h3>Images</h3>
+	<p>
+	You can set it up with: Woop woop woop
+	<pre class="prettyprint linenums" lang = "lang-html">
+	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
+	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
+	&lt/p&gt;</pre>
+	</p>
+-->
+<!--
+	Result:
+	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
+	<legend>Here's the legend of the picture.</legend>
+	</p>
+-->
+     
+<!--
+	<h3>Code</h3>
+	<p>
+	You can set it up with:
+        <div id="vibrant_ink"class="theme_preview">
+       
+	<pre class="prettyprint linenums" lang = "lang-html">
+	&ltpre class="prettyprint linenums"&gt;
+	Your code here
+	&lt/pre&gt;</pre>
+	 </div>
+        
+
+
+        
+	Result:
+	<pre class="prettyprint linenums" lang = "lang-py">
+	#------IMPORTS-------
+from pygestalt import nodes
+from pygestalt import interfaces
+from pygestalt import machines
+from pygestalt import functions
+from pygestalt.machines import elements
+from pygestalt.machines import kinematics
+from pygestalt.machines import state
+from pygestalt.utilities import notice
+from pygestalt.publish import rpc	#remote procedure call dispatcher
+import time
+import io
+
+#------VIRTUAL MACHINE------
+class virtualMachine(machines.virtualMachine):
+	
+	def initInterfaces(self):
+		if self.providedInterface: self.fabnet = self.providedInterface		#providedInterface is defined in the virtualMachine class.
+		else: self.fabnet = interfaces.gestaltInterface('FABNET', interfaces.serialInterface(baudRate = 115200, interfaceType = 'ftdi', portName = '/dev/tty.usbserial-FTXW7FE2'))
+		
+</pre>
+	</p>
+-->
+
+<h3 id="flow" >Flow</h3>
+        <p>I could easily create models in Rhino (a 3D Modler) and output to a .csv via Grasshopper (a plug-in for Rhino).</p>
+        <p>I could also open other file types, such as .png, .svg, and g-codes, in Grasshopper. Then output as .csv, which can be sent to the router</p>
+        
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="media/images/Rhino%20star.png" alt="Gear">
+              <div class="carousel-caption">
+        <h3>Sketch</h3>
+        <p>This is not a sketch of a throwing star.</p>
+      </div>
+    </div>
+      
+
+
+    <div class="item">
+      <img src="media/images/dividecrv.png" alt="Boot">
+                      <div class="carousel-caption">
+        <h3>Divide Curve</h3>
+        <p>Sketch opened in grasshopper as a curve. Then CurveDivide for points. </p> <p>Mmm... points.</p>
+      </div>
+    </div>
+  
+
+      
+    <div class="item">
+      <img src="media/images/GHpath.png" alt="Gear">
+                      <div class="carousel-caption">
+        <h3>Path</h3>
+        <p>Split &amp Concact for path.</p>
+      </div>
+    </div>
+            </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>  
+        
+        
+<h3 id = "cut">First Cuts</h3>    
+<h4>preface</h4>  
+<pre class="prettyprint">
+About the Bit:
+Type = ball-nose 
+No. of Flutes = 2  
+Diameter = 3.175mm (1/8in) 
+Condition = dull
+
+About the Job:
+Material = aluminium
+Cutting Speed = 20,000rpm
+Cutting Depth = 0.5mm // probably too much
+Feedrate = 2mm/s     // probably too little 
+WD-40 Application = liberal
+</pre> 
+
+        
+<div id="myCarousel1" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="media/images/IMG_5558.jpg" alt="Gear">
+              <div class="carousel-caption">
+        <h3>Gear</h3>
+        <p>First attempt to cut aluminium. I used a gear generator in grasshopper. Kind of looks like a throwing star...</p>
+      </div>
+    </div>
+      
+
+
+    <div class="item">
+      <img src="media/images/IMG_5562.jpg" alt="Boot">
+                      <div class="carousel-caption">
+        <h3>Dust Boot!</h3>
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      </div>
+    </div>
+  
+
+      
+    <div class="item">
+      <img src="media/images/BigGood.jpg" class="img-responsive" alt="Responsive image">
+                      <div class="carousel-caption">
+        <h3>Good cut</h3>
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      </div>
+    </div>
+
+
+    <div class="item">
+      <img src="media/images/BigBad.jpg" class="img-responsive" alt="Responsive image">
+                      <div class="carousel-caption">
+        <h3>Bad cut</h3>
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      </div>
+    </div>
+
+
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>   
+        </div>  
+    
+    
+    <p>      Result:
+        image gear and dust boot, 
+        close up cut quality </p>
+        
+        
+            <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video controls="controls"  class="embed-responsive-item" muted="muted">
+            <source src="media/Cut%20inspection.m4v" type="video/mp4">
+        </video>
+    </div> 
+
+        
+        
+<h3 id = "future" >Future Cuts</h3>
+        
+<h4>DustBoot2.0</h4>  
+<pre class="prettyprint">
+About the Bit:
+Type = flat-end 
+No. of Flutes = 2  
+Diameter = 3.175mm (1/8in) 
+Condition = sharp
+
+About the Job:
+Material = acrylic
+Cutting Speed = 20,000rpm
+Cutting Depth = 2mm // just right
+Feedrate = 6.5mm/s 
+Plungrate = 1.25mm/s 
+</pre> 
+  
+        
+<div class= "well">
+    <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video controls="controls"  class="embed-responsive-item" muted="muted">
+            <source src="media/Videos/sim3mm.mp4" type="video/mp4">
+
+        </video> 
+
+    </div>  
+       <center>3.17mm: Slotting, Facing and Roughing</center>
+    <p></p>
+    <p> I used Autodesk fusion for CAD model and CAM procedures. </p>
+    
+    <p>G-code was generated using the xyz.cps post porcessor, found <a href="http://cam.autodesk.com/posts/">here</a>.</p>
+
+    
+    <center>
+    	<a href="media/Scripts/Dusty-3mm.csv">
+	<button type="button" class="btn btn-primary btn-lg">G-code.csv</button>
+	</a>
+      
+    <a href="media/Scripts/gcode-path.py">
+	<button type="button" class="btn btn-primary btn-lg">G-code-Path.py</button>
+	</a>
+
+    
+    <a href="media/Scripts/path.csv">
+	<button type="button" class="btn btn-primary btn-lg">Path.csv</button>
+	</a>
+        
+        
+    </center>
+
+    
+        </div>
+      
+<!--
+        
+        
+<h4>ESP8266 Breakout Board</h4>  
+<pre class="prettyprint">
+About the Bit
+Type = Ball-Nose Bit 
+No. of Flutes = 2  
+Diameter = 3.175mm (1/8in) 
+Condition = dull
+
+About the Job
+Material = aluminium
+Cutting Speed = 20,000rpm
+Cutting Depth = 0.5mm // probably too much
+Feedrate = 2mm/s     // probably too little        </pre> 
+ 
+<p>Simulations, gcode and path</p>   
+        
+-->
+
+          <a class="back-to-top" href = "#">
+
+          <button id = "butop" type="button" class="btn btn-primary btn-lg">
+
+          <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+          </a>
+ 
+    <!-- End of your content -->
+      </div>
+     <!-- /container -->
 
 	<!-- footer -->
     
@@ -236,7 +520,20 @@
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
         </p>
     </footer>
-    
+
+      
+<!--      <a class="back-to-top" href="#"><span class = "glyphicon glyphicon-arrow-up"></span></a>-->
+
+
+  
+<!--
+            <p>Triangle-right icon on a button:
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-triangle-right"></span> Triangle-right
+        </button>
+      </p>
+-->
+      
 
 	<!-- Do not touch this! -->
     <!-- Bootstrap core JavaScript
@@ -254,6 +551,14 @@
     <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
     <script type="text/javascript" src="viewport.js"> </script>
 
+ <script>
+    var video = document.getElementsByTagName('video')[0];
+
+    video.onended = function(e) {
+            $(this).get(0).play();
+    };
+</script>   
+
 
 
 
@@ -265,10 +570,54 @@
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
 
-	
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
-  </body>
+      
+      
+    <!-- Scrolling Nav JavaScript -->
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
+    <script src="bootstrap/js/scrolling-nav.js"></script>
+
+<!--
+    <script type="text/javascript">
+	$('body').prepend('<a href="#" class="back-to-top"></a>');
+</script>  
+-->
+   
+<script>    
+      var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+    
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+	   $('a.back-to-top').fadeOut('slow');
+        console.log("Haven't scrolled in 250ms!");
+    }, 500));
+});
+
+   
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
+    
+    
+</script>        
+   
+    
+    </body>
+    
+
+    
 </html>

@@ -32,8 +32,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-       <!-- Load the menu file -->
-    <script>
+    <!-- Load the menu file -->
+      <script>
 	function menu() {
 					  $('#electrical').load("electrical-menu.html");
 					  $('#mechanical').load("mechanical-menu.html");
@@ -88,13 +88,25 @@
     </nav>
 
     <div class="container">
-	<!-- Insert your content here below! -->
 
 
-    <h2>CNC Resotration and Operation</h2>
-    
-    <h3>Background</h3>
-	<p>
+    <h2 id = "top">CNC Development and Operation</h2>
+        <h4>Contents</h4>
+        
+        <div class="well">
+        <section id="cont">
+        <pre class="prettyprint linenums">
+<a class = "page-scroll" href="#background">Background</a>
+<a class = "page-scroll" href="#calibration">Calibration</a>
+<a class = "page-scroll" href="#flow">Flow</a>
+<a class = "page-scroll" href="#cut">Cuts</a>
+<a class = "page-scroll" href="#future">The Future!</a></pre>
+
+        </section>
+</div>
+    <h3 id=background>Background</h3>
+
+    <p>
 
         
         I have recently come across a small CNC router (300x220x50). The CNC was mechanically functional. However, there were no boards to control the stepper motors. I had also been reading up on <a href="http://archive.monograph.io/james/m-mtm">gestalt nodes</a> , they seemed, (and are), awesome! and could be well utilised in future projects. 
@@ -146,7 +158,7 @@
 	<script type="text/javascript">
 		var canvas = document.getElementById('cv');
 		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/CNC.stl');
+		viewer.setParameter('SceneUrl','media/CAD/CNC.stl');
 		viewer.setParameter('ModelColor','#B0C4DE');
 		viewer.setParameter('BackgroundColor1','#E5D7BA');
 		viewer.setParameter('BackgroundColor2','#383840');
@@ -158,8 +170,10 @@
 		viewer.update();
 	</script> 
     </p> 
-    
-    <h3>Talking 'bout my calibration</h3>
+
+        
+    <div id = "calibration">    
+    <h3 id = "calibration">Talking 'bout my calibration</h3>
         
         <p>Gestalt nodes are programed from a python 'machine' script, here's the one I used.<a href= Pythoneg.html> CNCRouter.py</a>
         </p>
@@ -187,9 +201,7 @@ def initKinematics(self):
         </p>
         
                 <pre class="prettyprint">
-
-Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacement]
-        </pre> 
+    Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacement]</pre> 
         
         <h4>Bed Limits and Level</h4>
         <p>
@@ -201,67 +213,9 @@ Actual Leadscrew = [Assumed Leadscrew * Expected Displacement]/[Actual Displacem
         </p>
         
         
+</div>
 
-	
-<!--
-	<h3>Images</h3>
-	<p>
-	You can set it up with: Woop woop woop
-	<pre class="prettyprint linenums" lang = "lang-html">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
-	</p>
--->
-<!--
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
--->
-     
-<!--
-	<h3>Code</h3>
-	<p>
-	You can set it up with:
-        <div id="vibrant_ink"class="theme_preview">
-       
-	<pre class="prettyprint linenums" lang = "lang-html">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	 </div>
-        
-
-
-        
-	Result:
-	<pre class="prettyprint linenums" lang = "lang-py">
-	#------IMPORTS-------
-from pygestalt import nodes
-from pygestalt import interfaces
-from pygestalt import machines
-from pygestalt import functions
-from pygestalt.machines import elements
-from pygestalt.machines import kinematics
-from pygestalt.machines import state
-from pygestalt.utilities import notice
-from pygestalt.publish import rpc	#remote procedure call dispatcher
-import time
-import io
-
-#------VIRTUAL MACHINE------
-class virtualMachine(machines.virtualMachine):
-	
-	def initInterfaces(self):
-		if self.providedInterface: self.fabnet = self.providedInterface		#providedInterface is defined in the virtualMachine class.
-		else: self.fabnet = interfaces.gestaltInterface('FABNET', interfaces.serialInterface(baudRate = 115200, interfaceType = 'ftdi', portName = '/dev/tty.usbserial-FTXW7FE2'))
-		
-</pre>
-	</p>
--->
-
-<h3>Flow</h3>
+<h3 id="flow" >Flow</h3>
         <p>I could easily create models in Rhino (a 3D Modler) and output to a .csv via Grasshopper (a plug-in for Rhino).</p>
         <p>I could also open other file types, such as .png, .svg, and g-codes, in Grasshopper. Then output as .csv, which can be sent to the router</p>
         
@@ -316,7 +270,7 @@ class virtualMachine(machines.virtualMachine):
 </div>  
         
         
-<h3>First Cuts</h3>    
+<h3 id = "cut">First Cuts</h3>    
 <h4>preface</h4>  
 <pre class="prettyprint">
 About the Bit:
@@ -411,9 +365,11 @@ WD-40 Application = liberal
 
         
         
-<h3>Future Cuts</h3>
+<h3 id = "future" >Future Cuts</h3>
         
 <h4>DustBoot2.0</h4>  
+        
+<div class = "well">        
 <pre class="prettyprint">
 About the Bit:
 Type = flat-end 
@@ -428,19 +384,72 @@ Cutting Depth = 2mm // just right
 Feedrate = 6.5mm/s 
 Plungrate = 1.25mm/s 
 </pre> 
-  
-        
+ 
+        </div>	
+<div class="well">
+        <center>	<canvas id="cv1" width=640 height=480>
+	It seems you are using an outdated browser that does not support canvas :-(
+	</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('cv1');
+		var viewer = new JSC3D.Viewer(canvas);
+		viewer.setParameter('SceneUrl','media/CAD/dusty.stl');
+		viewer.setParameter('ModelColor','#B0C4DE');
+		viewer.setParameter('BackgroundColor1','#E5D7BA');
+		viewer.setParameter('BackgroundColor2','#383840');
+		viewer.setParameter('RenderMode','flat');
+		viewer.setParameter('MipMapping','on');
+		viewer.setParameter('Definition','high');
+		viewer.setParameter('Renderer','webgl');
+		viewer.init();
+		viewer.update();
+	</script> </center>
+    <center>
+        <a href = "media/CAD/Dustboot%20v3.step"><button type="button" class="btn btn-primary btn-lg">.STEP</button></a>
+    <a href = "media/CAD/dusty.stl"><button type="button" class="btn btn-primary btn-lg">.STL</button></a>
+    </center>
+        </div>
+
+ 
+
+<div align="center" class="embed-responsive embed-responsive-16by9">        
 <div class= "well">
     <div align="center" class="embed-responsive embed-responsive-16by9">
         <video controls="controls"  class="embed-responsive-item" muted="muted">
-            <source src="media/sim3mm.mp4" type="video/mp4">
+            <source src="media/Videos/sim3mm.mp4" type="video/mp4">
 
         </video> 
 
-    </div>  
+    </div> 
+ </div>
        <center>3.17mm: Slotting, Facing and Roughing</center>
+    <p></p>
+    <p> I used Autodesk fusion for CAD model and CAM procedures. </p>
+    
+    <p>G-code was generated using the xyz.cps post porcessor, found <a href="http://cam.autodesk.com/posts/">here</a>.</p>
+
+    
+    <center>
+    	<a href="media/Scripts/Dusty-3mm.csv">
+	<button type="button" class="btn btn-primary btn-lg">G-code.csv</button>
+	</a>
+      
+    <a href="media/Scripts/gcode-path.py">
+	<button type="button" class="btn btn-primary btn-lg">G-code-Path.py</button>
+	</a>
+
+    
+    <a href="media/Scripts/path.csv">
+	<button type="button" class="btn btn-primary btn-lg">Path.csv</button>
+	</a>
+        
+        
+    </center>
+
+    
         </div>
-<p>stuff</p>        
+      
+<!--
         
         
 <h4>ESP8266 Breakout Board</h4>  
@@ -459,8 +468,17 @@ Feedrate = 2mm/s     // probably too little        </pre>
  
 <p>Simulations, gcode and path</p>   
         
+-->
 
+          <a class="back-to-top" href = "#">
 
+          <button id = "butop" type="button" class="btn btn-primary btn-lg">
+
+          <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+          </a>
+ 
     <!-- End of your content -->
       </div>
      <!-- /container -->
@@ -476,6 +494,19 @@ Feedrate = 2mm/s     // probably too little        </pre>
         </p>
     </footer>
 
+      
+<!--      <a class="back-to-top" href="#"><span class = "glyphicon glyphicon-arrow-up"></span></a>-->
+
+
+  
+<!--
+            <p>Triangle-right icon on a button:
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-triangle-right"></span> Triangle-right
+        </button>
+      </p>
+-->
+      
 
 	<!-- Do not touch this! -->
     <!-- Bootstrap core JavaScript
@@ -503,6 +534,7 @@ Feedrate = 2mm/s     // probably too little        </pre>
 
 
 
+
     <!-- Syntax Highlighter -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
@@ -516,5 +548,49 @@ Feedrate = 2mm/s     // probably too little        </pre>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
+      
+      
+    <!-- Scrolling Nav JavaScript -->
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
+    <script src="bootstrap/js/scrolling-nav.js"></script>
+
+<!--
+    <script type="text/javascript">
+	$('body').prepend('<a href="#" class="back-to-top"></a>');
+</script>  
+-->
+   
+<script>    
+      var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+    
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+	   $('a.back-to-top').fadeOut('slow');
+        console.log("Haven't scrolled in 250ms!");
+    }, 500));
+});
+
+   
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
+    
+    
+</script>        
+   
+    
     </body>
+    
+
+    
 </html>
