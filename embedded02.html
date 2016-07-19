@@ -92,32 +92,30 @@
 	<!-- Insert your content here below! -->
 
 
-     <h2>Python</h1>
+     <h2>Python</h2>
     
-    <h3>Menu</h3>
-	<p>
-	You can edit it by changing the <em>exercises-menu.html</em> and <em>project-menu.html</em>. Do <strong>not</strong> add any &ltol&gt; or &ltul&gt;, leave the structure as it is.
-	</p>
-    
-    
-    <h3>Text</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp&gt;
-	Your text here
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p>
-	Your text here
-	</p>
+         <h4>Contents</h4>
+        <section id="cont">
+        <pre class="prettyprint linenums">
+<a class = "page-scroll" href="#background">Background</a>
+<a class = "page-scroll" href="#code">G-Code to CSV</a>
+<a class = "page-scroll" href="#mach">CSV to Machine</a>
+<a class = "page-scroll" href="#gest">WxGestalt</a>
+<a class = "page-scroll" href="#future">The Future!</a></pre>
+
+        </section>
+
+    <h3 id="background">Background</h3>
+<div class="well">
+        </div>
+
 	
-	
-	<h3>G-code to csv</h3>
-	<p>
-	The python script below isnt ideal. This approach becomes tricky when attempting to account for the different styles of g-code. For one-off, more simpile g-codes, its probably easier to use 'replace all' in a text editor.
-    However, the script can be easily altered to according to your regularly generated g-code. 
+	<h3 id="code">G-code to CSV</h3>
+<div class="well">	
+    <p>
+	The python script below isnt ideal. This approach becomes tricky when attempting to account for the different styles of g-code. For one-off, more simpile g-codes, its probably easier to use 'replace all' in a text editor.</p>
+      <p>
+        However, the script can be easily altered to according to your regularly generated g-code. </p>
 	<pre class="prettyprint linenums">
 import os
 import csv
@@ -159,18 +157,18 @@ for row in gcode:
 # close files
 fi.close
 fo.close</pre>
-	</p>
+
 	
 	<p>
 	<a href="media/gcode-csv.py">
 	<button type="button" class="btn btn-primary btn-lg">gcode-csv.py</button>
 	</a>
 	</p>
-
-    <h3>Path.csv to Moves</h3>
-    
+        </div>
+    <h3 id="mach">CSV to Machine</h3>
+<div class="well">    
 <p>
- The CSV reader in one of the example python machines didn't seem to work for me. I had more luck with this code. I also modified the reader for X,Y, and Z axes.
+    The CSV reader in one of the example python machines didn't seem to work for me. I had more luck with this code. I also modified the reader for X,Y, and Z axes.</p>
        <pre class= "prettyprint linenums">
     	# This is for how fast the 
 	stages.xyzNode.setVelocityRequest(6.5)
@@ -226,89 +224,34 @@ for move in moves:
 		# This checks to see if the move is done.
     while status['stepsRemaining'] > 0:
         time.sleep(0.001)
-        status = stages.xAxisNode.spinStatusRequest()	
-	
-
-    </pre>
-    
-    </p>    
+        status = stages.xAxisNode.spinStatusRequest()</pre>
+ </div>   
  
-    
-    
+<h3 id="gest">WxGestalt</h3>
+        <div class="well">
+        
+        </div>
+<h3 id="future">The Future!</h3>
+        <div class="well">
+        
+        </div>    
 
-	<h3>3D Model</h3>
-	<p>	
-	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltcanvas id="cv" width=640 height=480&gt;
-	It seems you are using an outdated browser that does not support canvas :-(
-	&lt/canvas&gt;
-	&ltscript type="text/javascript"&gt;
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	&lt/script&gt;</pre>
-	
-	You can set up the path to the 3D model (.stl/.obj) within this line:
-	<pre class="prettyprint linenums">
-	viewer.setParameter('SceneUrl','media/monkey.stl');</pre>
-	
-	Result:
-	<canvas id="cv" width=640 height=480>
-	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	</script> 
-    </p> 
-    
-    <h3>Download</h3>
-	<p>
-	You can set up a button for files to be downloaded with:
-	<pre class="prettyprint linenums">
-	&lta href="#"&gt;
-	&ltbutton type="button" class="btn btn-primary btn-lg">Download the file&lt/button&gt;
-	&lt/a&gt;</pre>
-	</p>
-	
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
-      
-    <h3>Would you like to insert more style/elements?</h3>
-      <p>
-      Check the documentation of Bootstrap <a href="">here</a>.
-      </p>
+        
+        
+          <a class="back-to-top" href = "#">
+
+          <button id = "butop" type="button" class="btn btn-primary btn-lg">
+
+          <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+          </a>        
+
     <!-- End of your content -->
 
     </div> <!-- /container -->
 
-<!-- footer -->
+	<!-- footer -->
     
     <footer id="footer">
         <p id="cclicense">
@@ -318,7 +261,20 @@ for move in moves:
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
         </p>
     </footer>
-    
+
+      
+<!--      <a class="back-to-top" href="#"><span class = "glyphicon glyphicon-arrow-up"></span></a>-->
+
+
+  
+<!--
+            <p>Triangle-right icon on a button:
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-triangle-right"></span> Triangle-right
+        </button>
+      </p>
+-->
+      
 
 	<!-- Do not touch this! -->
     <!-- Bootstrap core JavaScript
@@ -336,6 +292,14 @@ for move in moves:
     <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
     <script type="text/javascript" src="viewport.js"> </script>
 
+ <script>
+    var video = document.getElementsByTagName('video')[0];
+
+    video.onended = function(e) {
+            $(this).get(0).play();
+    };
+</script>   
+
 
 
 
@@ -347,10 +311,54 @@ for move in moves:
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
 
-	
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
-  </body>
+
+      
+    <!-- Scrolling Nav JavaScript -->
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
+    <script src="bootstrap/js/scrolling-nav.js"></script>
+
+<!--
+    <script type="text/javascript">
+	$('body').prepend('<a href="#" class="back-to-top"></a>');
+</script>  
+-->
+   
+<script>    
+      var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+    
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+	   $('a.back-to-top').fadeOut('slow');
+        console.log("Haven't scrolled in 250ms!");
+    }, 500));
+});
+
+   
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
+    
+    
+</script>        
+   
+    
+    </body>
+    
+
+    
 </html>

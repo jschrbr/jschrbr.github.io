@@ -98,7 +98,7 @@
         <pre class="prettyprint linenums">
 <a class = "page-scroll" href="#background">Background</a>
 <a class = "page-scroll" href="#calibration">Calibration</a>
-<a class = "page-scroll" href="#flow">Flow</a>
+<a class = "page-scroll" href="#prep">Prep</a>
 <a class = "page-scroll" href="#cut">Cuts</a>
 <a class = "page-scroll" href="#future">The Future!</a></pre>
 
@@ -106,9 +106,8 @@
 </div>
     <h3 id=background>Background</h3>
 
-    <p>
-
-        
+        <div class = 'well'>      
+    <p>        
         I have recently come across a small CNC router (300x220x50). The CNC was mechanically functional. However, there were no boards to control the stepper motors. I had also been reading up on <a href="http://archive.monograph.io/james/m-mtm">gestalt nodes</a> , they seemed, (and are), awesome! and could be well utilised in future projects. 
     </p>
         
@@ -122,7 +121,7 @@
         
     </p>  
 
-            
+    </div>          
     <h4>The Router</h4>
  	Specs:
     <pre class="prettyprint">
@@ -150,14 +149,21 @@
     Max RPM = ?rpm
     </pre>
          
-	<p>	
 
-	<canvas id="cv" width=640 height=480>
+
+<div class="embed-responsive embed-responsive-16by9"><center><canvas id="cv" >  
 	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
+        </canvas></center></div>
+
+<script type="text/javascript">
+
+
 		var canvas = document.getElementById('cv');
 		var viewer = new JSC3D.Viewer(canvas);
+	   canvas.width  = (0.75*window.innerWidth);
+	   canvas.height = (0.55*canvas.width);
+
+
 		viewer.setParameter('SceneUrl','media/CAD/CNC.stl');
 		viewer.setParameter('ModelColor','#B0C4DE');
 		viewer.setParameter('BackgroundColor1','#E5D7BA');
@@ -168,13 +174,32 @@
 		viewer.setParameter('Renderer','webgl');
 		viewer.init();
 		viewer.update();
-	</script> 
-    </p> 
+        
+        window.addEventListener('resize', resizeCanvas, false);
+    
+        function resizeCanvas() {
+        canvas.width =(0.75*window.innerWidth);
+        canvas.height = (0.55*canvas.width);
+		viewer.setParameter('SceneUrl','media/CAD/CNC.stl');
+		viewer.setParameter('ModelColor','#B0C4DE');
+		viewer.setParameter('BackgroundColor1','#E5D7BA');
+		viewer.setParameter('BackgroundColor2','#383840');
+		viewer.setParameter('RenderMode','flat');
+		viewer.setParameter('MipMapping','on');
+		viewer.setParameter('Definition','high');
+		viewer.setParameter('Renderer','webgl');
+		viewer.init();
+		viewer.update();
+        refresh();
+        }
+    
+ </script>
 
+  
         
-    <div id = "calibration">    
+
     <h3 id = "calibration">Talking 'bout my calibration</h3>
-        
+     <div class = well>           
         <p>Gestalt nodes are programed from a python 'machine' script, here's the one I used.<a href= Pythoneg.html> CNCRouter.py</a>
         </p>
         
@@ -215,7 +240,8 @@ def initKinematics(self):
         
 </div>
 
-<h3 id="flow" >Flow</h3>
+<h3 id="prep" >Prep</h3>
+ <div class = well>
         <p>I could easily create models in Rhino (a 3D Modler) and output to a .csv via Grasshopper (a plug-in for Rhino).</p>
         <p>I could also open other file types, such as .png, .svg, and g-codes, in Grasshopper. Then output as .csv, which can be sent to the router</p>
         
@@ -268,10 +294,10 @@ def initKinematics(self):
     <span class="sr-only">Next</span>
   </a>
 </div>  
-        
+        </div>       
         
 <h3 id = "cut">First Cuts</h3>    
-<h4>preface</h4>  
+<div class='well well-sm'><h4>Details:</h4>  
 <pre class="prettyprint">
 About the Bit:
 Type = ball-nose 
@@ -286,8 +312,10 @@ Cutting Depth = 0.5mm // probably too much
 Feedrate = 2mm/s     // probably too little 
 WD-40 Application = liberal
 </pre> 
-
+        </div>
         
+        <div class="well well-sm">
+<h4>Results:</h4> 
 <div id="myCarousel1" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -348,28 +376,22 @@ WD-40 Application = liberal
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>   
+</div> 
+
         </div>  
-    
-    
-    <p>      Result:
-        image gear and dust boot, 
-        close up cut quality </p>
-        
-        
+<p></p>     
             <div align="center" class="embed-responsive embed-responsive-16by9">
         <video controls="controls"  class="embed-responsive-item" muted="muted">
             <source src="media/Cut%20inspection.m4v" type="video/mp4">
         </video>
     </div> 
 
-        
+</div>         
         
 <h3 id = "future" >Future Cuts</h3>
-        
-<h4>DustBoot2.0</h4>  
-        
-<div class = "well">        
+      
+<div class = "well well-sm"> 
+<h4>DustBoot2.0</h4> 
 <pre class="prettyprint">
 About the Bit:
 Type = flat-end 
@@ -385,34 +407,58 @@ Feedrate = 6.5mm/s
 Plungrate = 1.25mm/s 
 </pre> 
  
-        </div>	
-<div class="well">
-        <center>	<canvas id="cv1" width=640 height=480>
+
+     
+<div class="embed-responsive embed-responsive-16by9"><canvas id="cv1" >  
 	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
-		var canvas = document.getElementById('cv1');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/CAD/dusty.stl');
-		viewer.setParameter('ModelColor','#B0C4DE');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	</script> </center>
-    <center>
-        <a href = "media/CAD/Dustboot%20v3.step"><button type="button" class="btn btn-primary btn-lg">.STEP</button></a>
+        </canvas></div>
+
+<script type="text/javascript">
+
+
+		var canvas1 = document.getElementById('cv1');
+		var viewer1 = new JSC3D.Viewer(canvas1);
+	   canvas1.width  = (0.7*window.innerWidth);
+	   canvas1.height = (0.55*canvas.width);
+
+
+		viewer1.setParameter('SceneUrl','media/CAD/dusty.stl');
+		viewer1.setParameter('ModelColor','#B0C4DE');
+		viewer1.setParameter('BackgroundColor1','#E5D7BA');
+		viewer1.setParameter('BackgroundColor2','#383840');
+		viewer1.setParameter('RenderMode','flat');
+		viewer1.setParameter('MipMapping','on');
+		viewer1.setParameter('Definition','high');
+		viewer1.setParameter('Renderer','webgl');
+		viewer1.init();
+		viewer1.update();
+        
+        window.addEventListener('resize', resizeCanvas, false);
+    
+        function resizeCanvas() {
+        canvas1.width =(0.7*window.innerWidth);
+        canvas1.height = (0.55*canvas.width);
+		viewer1.setParameter('SceneUrl','media/CAD/dusty.stl');
+		viewer1.setParameter('ModelColor','#B0C4DE');
+		viewer1.setParameter('BackgroundColor1','#E5D7BA');
+		viewer1.setParameter('BackgroundColor2','#383840');
+		viewer1.setParameter('RenderMode','flat');
+		viewer1.setParameter('MipMapping','on');
+		viewer1.setParameter('Definition','high');
+		viewer1.setParameter('Renderer','webgl');
+		viewer1.init();
+		viewer1.update();
+        refresh();
+        }
+    
+ </script>
+<div class='well well-sm'> 
+<center>
+    <a href = "media/CAD/Dustboot%20v3.step"><button type="button" class="btn btn-primary btn-lg">.STEP</button></a>
     <a href = "media/CAD/dusty.stl"><button type="button" class="btn btn-primary btn-lg">.STL</button></a>
     </center>
-        </div>
-
- 
-
-<div align="center" class="embed-responsive embed-responsive-16by9">        
+</div> 
+    
 <div class= "well">
     <div align="center" class="embed-responsive embed-responsive-16by9">
         <video controls="controls"  class="embed-responsive-item" muted="muted">
@@ -421,7 +467,7 @@ Plungrate = 1.25mm/s
         </video> 
 
     </div> 
- </div>
+
        <center>3.17mm: Slotting, Facing and Roughing</center>
     <p></p>
     <p> I used Autodesk fusion for CAD model and CAM procedures. </p>
@@ -446,7 +492,7 @@ Plungrate = 1.25mm/s
         
     </center>
 
-    
+           </div>	 
         </div>
       
 <!--
