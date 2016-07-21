@@ -56,7 +56,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">James Schreiber</a>
+          <a class="navbar-brand" href="../index.html">James Schreiber</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -86,51 +86,170 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-      
-      
-      
+
     <div class="container">
 
 	<!-- Insert your content here below! -->
 
 
-     <h2>PCB Manufacturing</h2>
+     <h2>Python &amp GUI</h2>
     
          <h4>Contents</h4>
         <section id="cont">
         <pre class="prettyprint linenums">
-<a class = "page-scroll" href="#h0">Background</a>
-<a class = "page-scroll" href="#h1">Etching</a>
-<a class = "page-scroll" href="#h2">Routing</a>
-<a class = "page-scroll" href="#h3">Results</a>
-<a class = "page-scroll" href="#h4">The Future!</a></pre>
+<a class = "page-scroll" href="#background">Background</a>
+<a class = "page-scroll" href="#code">G-Code to CSV</a>
+<a class = "page-scroll" href="#mach">CSV to Machine</a>
+<a class = "page-scroll" href="#gest">WxGestalt</a>
+<a class = "page-scroll" href="#ai2">App Inventor 2</a>
+<a class = "page-scroll" href="#future">The Future!</a></pre>
 
         </section>
 
-    <h3 id=h0>Background</h3>
-<div class="well"><p>fabnet small and single layer, easy to etch</p><p>gestalt boards from OSHpark unassembled</p></div>
-    <h3 id=h1>Etching</h3>
+    <h3 id="background">Background</h3>
 <div class="well">
-    <p>chemicals pics</p>
-    <p>process</p>
-</div>
-    <h3 id=h2>Routing</h3>
-<div class="well">
-    <p>calcs</p>    
-    <p>PCB to G-code</p>
-    <p>Setup</p>
-</div>        
-    <h3 id=h3>Results</h3>
-<div class="well">
-    <p>Carousel</p>
-</div>
-    <h3 id=h3>The Future!</h3>
-<div class="well">
-<p>3 axis stepper board  </p>   
-<p>esp8266 steppers</p>
-</div>
+        </div>
+
+	
+	<h3 id="code">G-code to CSV</h3>
+<div class="well">	
+    <p>
+	The python script below isnt ideal. This approach becomes tricky when attempting to account for the different styles of g-code. For one-off, more simpile g-codes, its probably easier to use 'replace all' in a text editor.</p>
+      <p>
+        However, the script can be easily altered to according to your regularly generated g-code. </p>
+	<pre class="prettyprint linenums">
+import os
+import csv
+
+#Rename g-code extension to .csv then open file path.
+fi = open(os.path.expanduser("~/gcode.csv"))
+#Read g-code
+gcode = csv.reader(fi)
+#Create empty .csv, open file path for writing.
+fo = open(os.path.expanduser("~/path.csv"), "wb")     
+# write to csv.
+path = csv.writer(fo, delimiter='	', quotechar='"', quoting=csv.QUOTE_NONE)
+
+#For loop, using replace to comma seperate values
+for row in gcode:
+    row = str(row)
+    
+    # seperates x and y values with a comma. Comment out when running final path
+    row1 = row.replace( "Y", ", Y" )
+    
+    
+    # Uncomment for final path file
+    # row12 = row.replace( "Y", ", " )
+    # row13 = row12.replace("Z" , "")
+    # row1 = row13.replace("X", "")
+    row2 = row1.replace( "G01" , "")
+    row3 = row2.replace( "G00" , "")
+    
+    # Toggle comment for final path
+    row4 = row3.replace( "F", ", F" )
+    # row4 = row3.replace( "F", ", " )
+    
+    
+    # Write to .csv
+    path.writerow(row4)
+    print(row4)
+    
+    
+# close files
+fi.close
+fo.close</pre>
+
+	
+	<p>
+	<a href="media/gcode-csv.py">
+	<button type="button" class="btn btn-primary btn-lg">gcode-csv.py</button>
+	</a>
+	</p>
+        </div>
+    <h3 id="mach">CSV to Machine</h3>
+<div class="well">    
+<p>
+    The CSV reader in one of the example python machines didn't seem to work for me. I had more luck with this code. I also modified the reader for X,Y, and Z axes.</p>
+       <pre class= "prettyprint linenums">
+    	# This is for how fast the 
+	stages.xyzNode.setVelocityRequest(6.5)
+        stages.zAxisNode.setVelocityRequest(1.25)
+
+    
+	# Some random moves to test with
+#	moves = [[0,0,-18], [0,0,0]]
+#	moves = [[-2,0,0]]
+#
+#
+f = open(os.path.expanduser("~/CNCRouter/Gestalt/pygestalt/examples/machines/htmaa/path.csv "))
+
+
+
+csv_f = csv.reader(f)
+
+moves = []
+n = []
+p = []
+
+i = 0
+
+
+for row in csv_f:
+	try:
+		n.append(float(row[0]))
+	except ValueError:
+   		continue
+   	try:
+		n.append(float(row[1]))
+	except ValueError:
+   		continue
+   	try:
+		n.append(float(row[2]))
+	except ValueError:
+   		continue
+
+length = len(n)
+
+
+while i&ltlength:
+	p = [n[i],n[i+1],n[i+2]]
+	moves.append(p)
+	i = i + 3
+f.close
+
+
+	# Move!
+for move in moves:
+    stages.move(move, 0)
+    status = stages.xAxisNode.spinStatusRequest()
+		# This checks to see if the move is done.
+    while status['stepsRemaining'] > 0:
+        time.sleep(0.001)
+        status = stages.xAxisNode.spinStatusRequest()</pre>
+ </div>   
+ 
+<h3 id="gest">WxGestalt</h3>
+        <div class="well">
+        
+        </div>
+        
         
 
+<h3 id="ai2" >App Inventor 2</h3>
+   <div class="well">
+<p>carousels</p>
+<p>bluetooth</p>
+   </div> 
+                
+        
+        
+<h3 id="future">The Future!</h3>
+        <div class="well">
+        
+        </div>    
+
+        
+        
           <a class="back-to-top" href = "#">
 
           <button id = "butop" type="button" class="btn btn-primary btn-lg">
@@ -138,11 +257,11 @@
           <span class="glyphicon glyphicon-arrow-up"></span>
             </button>
 
-          </a>
- 
+          </a>        
+
     <!-- End of your content -->
-      </div>
-     <!-- /container -->
+
+    </div> <!-- /container -->
 
 	<!-- footer -->
     
@@ -209,7 +328,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
-      
+
       
     <!-- Scrolling Nav JavaScript -->
     <script src="bootstrap/js/jquery.easing.min.js"></script>

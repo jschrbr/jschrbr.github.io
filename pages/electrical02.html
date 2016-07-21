@@ -33,7 +33,7 @@
     <![endif]-->
     
     <!-- Load the menu file -->
-    <script>
+      <script>
 	function menu() {
 					  $('#electrical').load("electrical-menu.html");
 					  $('#mechanical').load("mechanical-menu.html");
@@ -56,7 +56,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">James Schreiber</a>
+          <a class="navbar-brand" href="../index.html">James Schreiber</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -81,26 +81,68 @@
             </li>
               
               
-<!--            <li><a href="contact.html">Contact</a></li>-->
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+      
+      
+      
     <div class="container">
 
 	<!-- Insert your content here below! -->
-      
-        <h2>Contact</h2>
-      	<div class= "well">
-        <p>email</p>
-        <p>linkedin</p>
-        <p>github</p>
+
+
+     <h2>PCB Manufacturing</h2>
+    
+         <h4>Contents</h4>
+        <section id="cont">
+        <pre class="prettyprint linenums">
+<a class = "page-scroll" href="#h0">Background</a>
+<a class = "page-scroll" href="#h1">Etching</a>
+<a class = "page-scroll" href="#h2">Routing</a>
+<a class = "page-scroll" href="#h3">Results</a>
+<a class = "page-scroll" href="#h4">The Future!</a></pre>
+
+        </section>
+
+    <h3 id=h0>Background</h3>
+<div class="well"><p>fabnet small and single layer, easy to etch</p><p>gestalt boards from OSHpark unassembled</p></div>
+    <h3 id=h1>Etching</h3>
+<div class="well">
+    <p>chemicals pics</p>
+    <p>process</p>
 </div>
+    <h3 id=h2>Routing</h3>
+<div class="well">
+    <p>calcs</p>    
+    <p>PCB to G-code</p>
+    <p>Setup</p>
+</div>        
+    <h3 id=h3>Results</h3>
+<div class="well">
+    <p>Carousel</p>
+</div>
+    <h3 id=h3>The Future!</h3>
+<div class="well">
+<p>3 axis stepper board  </p>   
+<p>esp8266 steppers</p>
+</div>
+        
 
-      
+          <a class="back-to-top" href = "#">
+
+          <button id = "butop" type="button" class="btn btn-primary btn-lg">
+
+          <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+
+          </a>
+ 
     <!-- End of your content -->
-
-    </div> <!-- /container -->
+      </div>
+     <!-- /container -->
 
 	<!-- footer -->
     
@@ -112,7 +154,20 @@
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
         </p>
     </footer>
-    
+
+      
+<!--      <a class="back-to-top" href="#"><span class = "glyphicon glyphicon-arrow-up"></span></a>-->
+
+
+  
+<!--
+            <p>Triangle-right icon on a button:
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-triangle-right"></span> Triangle-right
+        </button>
+      </p>
+-->
+      
 
 	<!-- Do not touch this! -->
     <!-- Bootstrap core JavaScript
@@ -120,16 +175,83 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
     
+    <!--Initially pause videos-->
+	<script type="text/javascript">
+        $("video").each(function(){
+            $(this).get(0).pause();
+        });
+	</script>    
+    <!-- Play video, when in viewport -->
+    <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
+    <script type="text/javascript" src="viewport.js"> </script>
+
+ <script>
+    var video = document.getElementsByTagName('video')[0];
+
+    video.onended = function(e) {
+            $(this).get(0).play();
+    };
+</script>   
+
+
+
+
     <!-- Syntax Highlighter -->
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
+
+
     <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
     <link href="media/github.css" type="text/css" rel="stylesheet">
 
-	
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
-  </body>
+      
+      
+    <!-- Scrolling Nav JavaScript -->
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
+    <script src="bootstrap/js/scrolling-nav.js"></script>
+
+<!--
+    <script type="text/javascript">
+	$('body').prepend('<a href="#" class="back-to-top"></a>');
+</script>  
+-->
+   
+<script>    
+      var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+    
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+	   $('a.back-to-top').fadeOut('slow');
+        console.log("Haven't scrolled in 250ms!");
+    }, 500));
+});
+
+   
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
+    
+    
+</script>        
+   
+    
+    </body>
+    
+
+    
 </html>
