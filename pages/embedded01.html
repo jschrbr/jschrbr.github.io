@@ -35,10 +35,10 @@
     <!-- Load the menu file -->
       <script>
 	function menu() {
-					  $('#electrical').load("electrical-menu.html");
-					  $('#mechanical').load("mechanical-menu.html");
-                      $('#embedded').load("embedded-menu.html");
-					  $('#cclicense').load("license.html");
+					  $('#electrical').load("../electrical-menu.html");
+					  $('#mechanical').load("../mechanical-menu.html");
+                      $('#embedded').load("../embedded-menu.html");
+					  $('#cclicense').load("../license.html");
 					  }
 	</script>
 
@@ -60,7 +60,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="about.html">About</a></li>
+            <li><a href="../about.html">About</a></li>
            
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mechanical<span class="caret"></span></a>
@@ -81,7 +81,7 @@
             </li>
               
               
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="../contact.html">Contact</a></li>
         </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -99,8 +99,7 @@
         <pre class="prettyprint linenums">
 <a class = "page-scroll" href="#background">Background</a>
 <a class = "page-scroll" href="#calibration">Curves to CSV</a>
-<a class = "page-scroll" href="#flow">Image to Curves</a>
-<a class = "page-scroll" href="#cut">Simulators</a>
+<a class = "page-scroll" href="#cut">Simulations</a>
 <a class = "page-scroll" href="#future">The Future!</a></pre>
 
         </section>
@@ -108,7 +107,7 @@
     <h3 id=background>Background</h3>
 <div class="well well-sm">
     <p>
-Rhino is a 3D modeler
+<a href="https://www.rhino3d.com/">Rhino</a> is a 3D modeler. <a href="http://www.grasshopper3d.com/">Grasshopper</a>  is a plugin for Rhino, desicribed as an algorithmic modeling for the Rhino environment. This makes the development of 
     </p>  
 </div>
             
@@ -265,25 +264,33 @@ Rhino is a 3D modeler
     <center><a href="media/Scripts/Curve-CSV.gh">
 	<button type="button" class="btn btn-primary btn-lg">Curve-CSV.gh</button>
 	</a> </center>
-
-  
-      
+<h4>Included:</h4>
+<p>- Input curve(s) for cutting and/or engraving</p>
+<p>- Input curve(s) for drilling/boring (turn off tabs)</p>    
+<p>- Multiple cutting depths </p>      
+<p>- Control retract, stock top and total, heights</p>
+<p>- Engrave image </p>      
+<p>- Add tabs </p>       
         </div>
 
-<h3 id="flow" >Image to Curves</h3>
-    <div class="well">
-        <p>image</p>
-        <button type="button" class="btn btn-primary btn-lg"></button>
-    </div>
 
       
 <h3 id = "cut" >Simulations</h3>    
-    <div class="well">        
+    <div class="well">
+        <h4>Multiple Curves:</h4>
         <div align="center" class="embed-responsive embed-responsive-16by9">
             <video controls="controls"  class="embed-responsive-item" muted="muted">
                 <source src="media/Videos/SIM1.mp4" type="video/mp4">
             </video>
         </div> 
+        <p></p>
+    <h4>Image Engrave:</h4>
+         <div align="center" class="embed-responsive embed-responsive-16by9">
+            <video controls="controls"  class="embed-responsive-item" muted="muted">
+                <source src="media/Videos/SIM2.mp4" type="video/mp4">
+            </video>
+        </div> 
+        
     </div>
     
 <h3 id = "future" >The Future!</h3>
@@ -327,30 +334,18 @@ Feedrate = 2mm/s     // probably too little        </pre>
       </div>
      <!-- /container -->
 
-	<!-- footer -->
+<!-- footer -->
     
     <footer id="footer">
         <p id="cclicense">
         </p>
         <p class="license">
         Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
-        Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
+        Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://studiostyl.es/schemes/son-of-obsidian">theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>.
         </p>
     </footer>
 
-      
-<!--      <a class="back-to-top" href="#"><span class = "glyphicon glyphicon-arrow-up"></span></a>-->
 
-
-  
-<!--
-            <p>Triangle-right icon on a button:
-        <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-triangle-right"></span> Triangle-right
-        </button>
-      </p>
--->
-      
 
 	<!-- Do not touch this! -->
     <!-- Bootstrap core JavaScript
@@ -358,27 +353,22 @@ Feedrate = 2mm/s     // probably too little        </pre>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
     
-    <!--Initially pause videos-->
+    <!--Initially pause videos, and play video on end-->
 	<script type="text/javascript">
         $("video").each(function(){
             $(this).get(0).pause();
         });
+        $('video').on('ended',function(){
+            $(this).get(0).play();
+        });
+
 	</script>    
     <!-- Play video, when in viewport -->
     <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
-    <script type="text/javascript" src="viewport.js"> </script>
+    <script type="text/javascript" src="bootstrap/js/viewport.js"> </script>
 
- <script>
-    var video = document.getElementsByTagName('video')[0];
-
-    video.onended = function(e) {
-            $(this).get(0).play();
-    };
-</script>   
-
-
-
-
+      
+      
     <!-- Syntax Highlighter -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
@@ -392,17 +382,13 @@ Feedrate = 2mm/s     // probably too little        </pre>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
 
-
+      
       
     <!-- Scrolling Nav JavaScript -->
     <script src="bootstrap/js/jquery.easing.min.js"></script>
     <script src="bootstrap/js/scrolling-nav.js"></script>
 
-<!--
-    <script type="text/javascript">
-	$('body').prepend('<a href="#" class="back-to-top"></a>');
-</script>  
--->
+
    
 <script>    
       var amountScrolled = 300;

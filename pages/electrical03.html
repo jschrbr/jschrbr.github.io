@@ -35,10 +35,10 @@
     <!-- Load the menu file -->
       <script>
 	function menu() {
-					  $('#electrical').load("electrical-menu.html");
-					  $('#mechanical').load("mechanical-menu.html");
-                      $('#embedded').load("embedded-menu.html");
-					  $('#cclicense').load("license.html");
+					  $('#electrical').load("../electrical-menu.html");
+					  $('#mechanical').load("../mechanical-menu.html");
+                      $('#embedded').load("../embedded-menu.html");
+					  $('#cclicense').load("../license.html");
 					  }
 	</script>
 
@@ -60,7 +60,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="about.html">About</a></li>
+            <li><a href="../about.html">About</a></li>
            
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mechanical<span class="caret"></span></a>
@@ -87,7 +87,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="../container">
 
 	<!-- Insert your content here below! -->
 
@@ -139,14 +139,14 @@
       </div>
      <!-- /container -->
 
-	<!-- footer -->
+<!-- footer -->
     
     <footer id="footer">
         <p id="cclicense">
         </p>
         <p class="license">
         Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
-        Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
+        Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://studiostyl.es/schemes/son-of-obsidian">theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>.
         </p>
     </footer>
 
@@ -158,27 +158,22 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="media/jquery-1.9.1.min.js"></script>
     
-    <!--Initially pause videos-->
+    <!--Initially pause videos, and play video on end-->
 	<script type="text/javascript">
         $("video").each(function(){
             $(this).get(0).pause();
         });
+        $('video').on('ended',function(){
+            $(this).get(0).play();
+        });
+
 	</script>    
     <!-- Play video, when in viewport -->
     <script type="text/javascript" src="bootstrap/js/isInViewport.js"> </script>
-    <script type="text/javascript" src="viewport.js"> </script>
+    <script type="text/javascript" src="bootstrap/js/viewport.js"> </script>
 
- <script>
-    var video = document.getElementsByTagName('video')[0];
-
-    video.onended = function(e) {
-            $(this).get(0).play();
-    };
-</script>   
-
-
-
-
+      
+      
     <!-- Syntax Highlighter -->
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js">
     </script>
@@ -198,11 +193,7 @@
     <script src="bootstrap/js/jquery.easing.min.js"></script>
     <script src="bootstrap/js/scrolling-nav.js"></script>
 
-<!--
-    <script type="text/javascript">
-	$('body').prepend('<a href="#" class="back-to-top"></a>');
-</script>  
--->
+
    
 <script>    
       var amountScrolled = 300;
