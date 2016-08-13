@@ -8,7 +8,7 @@
     <meta name="author" content="Name Surname">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>James Schreiber</title>
+    <title>TheMech.Tech</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
       <script>
 	function menu() {
 					  $('#electrical').load("../electrical-menu.html");
-					  $('#mechanical').load("../mechanical-menu.html");
+					  $('#mechanical').load("../project-menu.html");
                       $('#embedded').load("../embedded-menu.html");
 					  $('#cclicense').load("../license.html");
 					  }
@@ -44,7 +44,7 @@
 
   </head>
 
-  <body onload="menu()">
+   <body onload="menu()">
 
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
@@ -56,29 +56,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">James Schreiber</a>
+          <a class="navbar-brand" href="../index.html"><span class="glyphicon glyphicon-cog"></span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="../about.html">About</a></li>
-           
               <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mechanical<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
               <ul id="mechanical" class="dropdown-menu" role="menu">
               </ul>
             </li>
               
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Electrical<span class="caret"></span></a>
-              <ul id="electrical" class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-            
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Embedded<span class="caret"></span></a>
-              <ul id="embedded" class="dropdown-menu" role="menu">
-              </ul>
-            </li>
+            <li><a href="../BnR.html">Blues 'n' Routes</a></li>
+
               
               
             <li><a href="../contact.html">Contact</a></li>
@@ -93,25 +83,13 @@
 
 
 <h2>Table of Contents</h2>
-<div class="well well-sm"><center><h4>Mechanical</h4>      </center>
+<div class="well well-sm"><center><h4>Projects</h4>      </center>
 <pre class="prettyprint linenums">
-<a href="mechanical01.html">CNC Dvelopments &amp Operation</a>
-<a href="mechanical02.html">Reverse Engineering</a>
-<a href="mechanical03.html">Construction, Maintenance &amp More</a></pre>
+<a href="project01.html">Gestalt Router</a>
+<a href="project02.html">Web &amp; GUI</a>
+<a href="project03.html">Design, Analysis, Manufacturing &amp; More</a></pre>
 
-    <center><h4>Electrical</h4></center>        
-<pre class="prettyprint linenums">
-<a href="electrical01.html">PCB Assembly</a>
-<a href="electrical02.html">PCB Manufacturing</a>
-<a href="electrical03.html">Electronics &amp Robotics</a></pre>
-
-    <center><h4>Embedded</h4>      </center>  
-            <pre class="prettyprint linenums">
-<a href="embedded01.html">Grasshopper</a>
-<a href="embedded02.html">Python &amp GUI</a>
-<a href="embedded03.html">Web</a></pre>
-    </div>
-
+    
           <a class="back-to-top" href = "#">
 
           <button id = "butop" type="button" class="btn btn-primary btn-lg">

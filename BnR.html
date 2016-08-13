@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="James Schreiber">
+    <meta name="author" content="Name Surname">
     <link rel="icon" href="pages/media/favicon.ico">
 
-    <title >TheMech.Tech</title>
+    <title>Blues 'n' Routes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="pages/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,76 +41,155 @@
 					  $('#cclicense').load("license.html");
 					  }
 	</script>
+      
+      <style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #555;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+    background:   #717D7E;
+}
+          
+          
+body {
+  /* Margin bottom by footer height + a 30px margin */
+/*position: inherit; */
+    margin: none;
+    border: none;
+    box-shadow: none;
+
+}          
+          
+          
+</style>
 
   </head>
 
-  <body onload="menu()">
+  <body onload="menu()" >
 
     <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle" data-toggle="dropdown" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-<a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-cog"></span></a>
+          <a class="navbar-brand" href="index.html"><span style="color:white;" class="glyphicon glyphicon-home"></span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="about.html">About</a></li>
-           
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
-              <ul id="mechanical" class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-              
-            <li><a href="BnR.html">Blues 'n' Routes</a></li>
 
+            
+                      <center><h3 style="color:	white;">Blues 'n' Routes</h3></center>
               
-              
-<!--            <li><a href="contact.html">Contact</a></li>-->
-        </ul>
+
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container">
+
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+  <li><a href="#home">Description</a></li>
+  <li><a href="#news">Specifications</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#contact">About</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- content of page -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+
+        <div class="container1" >
 
 	<!-- Insert your content here below! -->
       
-        <h2>Contact</h2>
-      	<div class= "well">
-        <h5>Personal</h5>
-        <p>E-mail: schrbrr@gmail.com james@themech.tech</p>
-        <p>LinkedIn: </p>
-        <p>Github: </p>
-        <br>
-        <h5>Company</h5>
-            
-        <p>100K Garages: <a href="https://100kgarages.com/profile.php?id=6150" >Blues 'n' Routes</a></p>
-        <p>BnR E-mail: bluesnroutes@gmail.com</p>
-</div>
+        <h3>Description</h3>
 
-      
+            <h4>Design</h4>
+            <p>Mechanical Design and Analysis</p>
+            <p>Basic Electircal Design anf Analysis</p>
+            <br>
+            <h4>Fabrication </h4>
+            <p>CNC Router: Dimensions, bits, materials.</p>
+            <p>familiar with a variety of 3D printing and Laser Cutting services</p>
+            <p>Variety of hand tools &amp; power tools</p>
+<br>
+        <h3>Specifications</h3>
+
+            <h4>Design</h4>
+            <p>Mechanical Design and Analysis</p>
+            <p>Basic Electircal Design and Analysis</p>
+            <br>
+            <h4>Fabrication </h4>
+            <p>CNC Router: Dimensions, bits, materials.</p>
+            <p>Access to a variety of hand tools &amp; power tools,<br> for mechanical and electrical purposes</p>
+            <p>familiar with a variety of 3D printing,<br> Laser Cutting and PCB fabricating services services</p>
+<br>
+        <h3>Contact</h3>
+
+        <p>E-mail: bluesnroutes@gmail.com</p>
+        <p>100k Garages: <a href="https://100kgarages.com/profile.php?id=6150">B'n'R</a></p>
+<br>
+         <h3>About</h3>
+
     <!-- End of your content -->
 
     </div> <!-- /container -->
 
+  
+       
+</div>      
+      
+<br>
+
 	<!-- footer -->
     
+<!--
     <footer id="footer">
         <p id="cclicense">
                 </p>
         <p class="license">
         Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
-        Edited by James Schreiber
-        <br>
         Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
         </p>
     </footer>
+-->
     
 
 	<!-- Do not touch this! -->

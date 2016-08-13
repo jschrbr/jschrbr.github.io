@@ -8,7 +8,7 @@
     <meta name="author" content="Name Surname">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>James Schreiber</title>
+    <title>TheMech.Tech</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,11 +32,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-       <!-- Load the menu file -->
-    <script>
+    <!-- Load the menu file -->
+      <script>
 	function menu() {
 					  $('#electrical').load("../electrical-menu.html");
-					  $('#mechanical').load("../mechanical-menu.html");
+					  $('#mechanical').load("../project-menu.html");
                       $('#embedded').load("../embedded-menu.html");
 					  $('#cclicense').load("../license.html");
 					  }
@@ -44,7 +44,7 @@
 
   </head>
 
-  <body onload="menu()">
+   <body onload="menu()">
 
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
@@ -56,29 +56,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../index.html">James Schreiber</a>
+          <a class="navbar-brand" href="../index.html"><span class="glyphicon glyphicon-cog"></span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="../about.html">About</a></li>
-           
               <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mechanical<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
               <ul id="mechanical" class="dropdown-menu" role="menu">
               </ul>
             </li>
               
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Electrical<span class="caret"></span></a>
-              <ul id="electrical" class="dropdown-menu" role="menu">
-              </ul>
-            </li>
-            
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Embedded<span class="caret"></span></a>
-              <ul id="embedded" class="dropdown-menu" role="menu">
-              </ul>
-            </li>
+            <li><a href="../BnR.html">Blues 'n' Routes</a></li>
+
               
               
             <li><a href="../contact.html">Contact</a></li>
@@ -91,7 +81,7 @@
 	<!-- Insert your content here below! -->
 
 
-  <h3>CNCRouter.py</h3>  
+  <h3>GestaltRouter.py</h3>  
 	<pre class="prettyprint linenums" lang = "lang-py">
 	#------IMPORTS-------
 # Two stage example Virtual Machine file
@@ -241,7 +231,7 @@ for move in moves:
         
         	<p>
 	<a href="media/Scripts/CNCRouter.py">
-	<button type="button" class="btn btn-primary btn-lg">CNCRouter.py</button>
+	<button type="button" class="btn btn-primary btn-lg">GestaltRouter.py</button>
 	</a>
 	</p>
 
